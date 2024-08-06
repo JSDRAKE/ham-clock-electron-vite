@@ -1,0 +1,150 @@
+.local-clock {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.clock-container {
+  height: 45%;
+  width: 45%;
+  display: flex;
+  padding: 30px;
+  justify-content: center;
+  border: 0.3rem solid #1a1a1a;
+  border-radius: 3rem;
+}
+
+h2 {
+  margin-top: 3rem;
+  font-size: 3.5rem;
+  text-align: center;
+  padding: 0 1rem;
+  border-bottom: 2px solid #1a1a1a;
+  background: linear-gradient(90deg, #00dbde, #fc00ff);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+
+.box {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.clock {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 0.5rem;
+  width: 70%;
+  height: 8rem;
+  color: #ffff;
+  background-color: #1a1a1a;
+  position: relative;
+  border-radius: 1rem;
+  font-size: 3rem;
+  overflow: hidden;
+}
+
+.clock p {
+  font-size: 1.5rem;
+  color: #ffff;
+}
+
+.clock::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 90%;
+  height: 8rem;
+  background: linear-gradient(0deg, transparent, transparent, #2370f5, #2370f5, #2370f5);
+  z-index: 1;
+  transform-origin: bottom right;
+  animation: animate 2s linear infinite;
+}
+
+.clock::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 90%;
+  height: 8rem;
+  background: linear-gradient(0deg, transparent, transparent, #b91fdc, #b91fdc, #b91fdc);
+  z-index: 0;
+  transform-origin: bottom right;
+  animation: animate 2s linear infinite;
+  animation-delay: -3s;
+}
+
+@keyframes animate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.front-clock {
+  text-align: center;
+  padding-top: 0.6rem;
+  background-color: #0d0d0d;
+  width: 95%;
+  height: 95%;
+  border-radius: 1rem;
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .clock-container {
+    height: 50%;
+    width: 50%;
+  }
+
+  h2 {
+    font-size: 2.5rem;
+  }
+
+  .clock {
+    height: 6rem;
+    font-size: 2.5rem;
+  }
+
+  .clock p {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 890px) {
+  .clock-container {
+    width: 60%;
+  }
+
+  .clock {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 590px) {
+  .clock-container {
+    grid-template-rows: 20% 80%;
+  }
+  h1 {
+    margin-top: 0;
+  }
+  .box {
+    display: grid;
+    grid-template-rows: 33% 33%;
+  }
+  .clock {
+    width: 30vw;
+    margin: 0;
+    font-size: 4rem;
+    margin-top: 0.8rem;
+  }
+}
