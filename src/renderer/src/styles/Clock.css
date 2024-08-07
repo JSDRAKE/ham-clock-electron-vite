@@ -1,4 +1,4 @@
-.local-clock {
+.div-clock {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -6,9 +6,8 @@
 }
 
 .clock-container {
-  height: 45%;
-  width: 45%;
-  display: flex;
+  display: grid;
+  grid-template-rows: center;
   padding: 30px;
   justify-content: center;
   border: 0.3rem solid #1a1a1a;
@@ -47,6 +46,17 @@ h2 {
   border-radius: 1rem;
   font-size: 3rem;
   overflow: hidden;
+  margin: 20px;
+}
+
+.front-clock {
+  text-align: center;
+  padding-top: 0.6rem;
+  background-color: #0d0d0d;
+  width: 95%;
+  height: 95%;
+  border-radius: 1rem;
+  z-index: 1;
 }
 
 .clock p {
@@ -88,16 +98,6 @@ h2 {
   100% {
     transform: rotate(360deg);
   }
-}
-
-.front-clock {
-  text-align: center;
-  padding-top: 0.6rem;
-  background-color: #0d0d0d;
-  width: 95%;
-  height: 95%;
-  border-radius: 1rem;
-  z-index: 1;
 }
 
 @media (max-width: 768px) {
