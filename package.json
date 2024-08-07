@@ -3,13 +3,52 @@
   "version": "1.0.0",
   "description": "Reloj para Radioaficionados",
   "main": "./out/main/index.js",
-  "author": "JSDRAKE - LU9WT",
-  "homepage": "https://www.jsdrake.com.ar",
+  "author": {
+    "name": "JSDRAKE - LU9WT",
+    "email": "lu9wt@jsdrake.com.ar",
+    "url": "https://www.jsdrake.com.ar"
+  },
+  "build": {
+    "appId": "jsdrake.ham-clock-electron-vite-by-lu9wt",
+    "productName": "Ham Clock by LU9WT",
+    "directories": {
+      "output": "dist"
+    },
+    "mac": {
+      "target": [
+        "dmg",
+        "zip"
+      ]
+    },
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ]
+    },
+    "linux": {
+      "icon": "icon.png",
+      "category": "Utility",
+      "target": [
+        "deb",
+        "rpm"
+      ]
+    },
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "JSDRAKE",
+        "repo": "ham-clock-electron-vite",
+        "private": true
+      }
+    ]
+  },
   "scripts": {
     "format": "prettier --write .",
     "lint": "eslint . --ext .js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix",
     "start": "electron-vite preview",
     "dev": "electron-vite dev",
+    "package": "electron-builder -p always",
     "build": "electron-vite build",
     "postinstall": "electron-builder install-app-deps",
     "build:unpack": "npm run build && electron-builder --dir",
