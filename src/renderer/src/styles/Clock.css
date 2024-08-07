@@ -29,6 +29,16 @@ h2 {
   background: linear-gradient(90deg, #00dbde, #fc00ff);
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
+  background-clip: text;
+}
+
+h3 {
+  font-size: 30px;
+  text-align: center;
+  background: linear-gradient(90deg, #00dbde, #fc00ff);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
 }
 
 .box {

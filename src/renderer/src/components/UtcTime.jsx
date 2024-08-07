@@ -37,6 +37,7 @@ const UtcTime = () => {
   return (
     <div className="div-clock">
       <div className="clock-container">
+        <h3>Hora UTC</h3>
         <div className="date-container">
           <h2 className="day" id="day-utc"></h2>
           <h2 className="date" id="date-utc"></h2>
