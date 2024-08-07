@@ -1,4 +1,4 @@
-import { app, shell, BrowserWindow, ipcMain } from 'electron'
+import { app, shell, BrowserWindow, Menu, dialog } from 'electron'
 import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
@@ -6,10 +6,15 @@ import icon from '../../resources/icon.png?asset'
 function createWindow() {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 900,
-    height: 670,
+    width: 1050,
+    height: 580,
+    minWidth: 1050,
+    minHeight: 580,
+    maxWidth: 1050,
+    maxHeight: 580,
     show: false,
     autoHideMenuBar: true,
+    maximizable: false,
     ...(process.platform === 'linux' ? { icon } : {}),
     webPreferences: {
       preload: join(__dirname, '../preload/index.js'),
@@ -49,9 +54,6 @@ app.whenReady().then(() => {
     optimizer.watchWindowShortcuts(window)
   })
 
-  // IPC test
-  ipcMain.on('ping', () => console.log('pong'))
-
   createWindow()
 
   app.on('activate', function () {
@@ -72,3 +74,69 @@ app.on('window-all-closed', () => {
 
 // In this file you can include the rest of your app"s specific main process
 // code. You can also put them in separate files and require them here.
+
+// Set the application menu
+
+const template = [
+  {
+    label: 'File',
+    submenu: [
+      {
+        label: 'Exit',
+        click: () => {
+          app.quit()
+        }
+      }
+    ]
+  },
+  // {
+  //   label: 'Desarrollo',
+  //   submenu: [
+  //     {
+  //       label: 'Abrir Consola de Desarrollo',
+  //       accelerator: 'CmdOrCtrl+Shift+I',
+  //       click () {
+  //         mainWindow.webContents.toggleDevTools() // Abrir la consola de desarrollo
+  //       }
+  //     },
+  //     {
+  //       label: 'Recargar',
+  //       accelerator: 'CmdOrCtrl+R',
+  //       click () {
+  //         mainWindow.reload()
+  //       }
+  //     }
+  //   ]
+  // },
+  {
+    label: 'Help',
+    submenu: [
+      {
+        label: 'About',
+        click: () => {
+          mostrarAcercaDe()
+        }
+      }
+    ]
+  }
+]
+
+const menu = Menu.buildFromTemplate(template)
+
+Menu.setApplicationMenu(menu)
+
+function mostrarAcercaDe() {
+  // Obtener la información de la aplicación
+  const nombreApp = 'Ham Clock by LU9WT'
+  const versionApp = app.getVersion()
+
+  // Construir el mensaje para mostrar
+  const mensaje = `${nombreApp}\nVersión: ${versionApp}`
+
+  // Mostrar un cuadro de diálogo con la información
+  dialog.showMessageBox({
+    type: 'info',
+    title: 'Acerca de',
+    message: mensaje
+  })
+}
