@@ -37,7 +37,7 @@ const LocalTime = () => {
   return (
     <div className="div-clock">
       <div className="clock-container">
-        <div>
+        <div className="date-container">
           <h2 className="day" id="day"></h2>
           <h2 className="date" id="date"></h2>
         </div>
