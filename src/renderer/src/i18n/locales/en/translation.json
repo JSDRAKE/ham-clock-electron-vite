@@ -1,0 +1,11 @@
+{
+  "time": {
+    "hour": "Hour",
+    "minute": "Minute",
+    "minutes": "Minutes",
+    "second": "Second",
+    "seconds": "Seconds"
+  },
+  "localTime": "Local Time",
+  "utcTime": "UTC Time"
+}
