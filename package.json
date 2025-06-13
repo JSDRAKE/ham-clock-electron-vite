@@ -1,6 +1,6 @@
 {
   "name": "ham-clock-electron-vite",
-  "version": "1.0.2",
+  "version": "1.0.1",
   "description": "Reloj para Radioaficionados",
   "main": "./out/main/index.js",
   "author": {
@@ -39,7 +39,7 @@
         "provider": "github",
         "owner": "JSDRAKE",
         "repo": "ham-clock-electron-vite",
-        "private": true
+        "private": false
       }
     ]
   },
