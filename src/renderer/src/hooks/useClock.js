@@ -11,38 +11,56 @@ const useClock = (isUtc = false) => {
     minute: '00',
     second: '00',
     day: isUtc ? 'Thursday' : 'Jueves', // Valor por defecto en inglés/español
-    date: ''
+    date: '',
   })
 
   const updateTime = useCallback(() => {
     const now = new Date()
-    const date = isUtc ? new Date(now.toISOString().slice(0, -1)) : now
 
     // Detectar el idioma del sistema
     const systemLanguage = navigator.language || 'en-US'
     const isSpanish = systemLanguage.startsWith('es')
     const locale = isSpanish ? 'es-ES' : 'en-US'
-    const timeZone = isUtc ? 'UTC' : undefined
 
-    const day = date.toLocaleString(locale, {
-      timeZone,
-      weekday: 'long'
-    })
+    // Para UTC, usamos los métodos UTC del objeto Date
+    if (isUtc) {
+      const utcDay = now.toLocaleString(locale, {
+        timeZone: 'UTC',
+        weekday: 'long',
+      })
+      const utcDate = now.toLocaleString(locale, {
+        timeZone: 'UTC',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+      })
 
-    const formattedDate = date.toLocaleString(locale, {
-      timeZone,
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    })
+      setTime({
+        hour: String(now.getUTCHours()).padStart(2, '0'),
+        minute: String(now.getUTCMinutes()).padStart(2, '0'),
+        second: String(now.getUTCSeconds()).padStart(2, '0'),
+        day: utcDay.charAt(0).toUpperCase() + utcDay.slice(1),
+        date: utcDate,
+      })
+    } else {
+      // Para hora local
+      const localDay = now.toLocaleString(locale, {
+        weekday: 'long',
+      })
+      const localDate = now.toLocaleString(locale, {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+      })
 
-    setTime({
-      hour: String(isUtc ? date.getUTCHours() : date.getHours()).padStart(2, '0'),
-      minute: String(isUtc ? date.getUTCMinutes() : date.getMinutes()).padStart(2, '0'),
-      second: String(isUtc ? date.getUTCSeconds() : date.getSeconds()).padStart(2, '0'),
-      day: day.charAt(0).toUpperCase() + day.slice(1),
-      date: formattedDate
-    })
+      setTime({
+        hour: String(now.getHours()).padStart(2, '0'),
+        minute: String(now.getMinutes()).padStart(2, '0'),
+        second: String(now.getSeconds()).padStart(2, '0'),
+        day: localDay.charAt(0).toUpperCase() + localDay.slice(1),
+        date: localDate,
+      })
+    }
   }, [isUtc])
 
   useEffect(() => {
