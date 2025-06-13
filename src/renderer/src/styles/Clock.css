@@ -98,7 +98,14 @@ h3 {
   left: -50%;
   width: 90%;
   height: 8rem;
-  background: linear-gradient(0deg, transparent, transparent, #2370f5, #2370f5, #2370f5);
+  background: linear-gradient(
+    0deg,
+    transparent,
+    transparent,
+    #2370f5,
+    #2370f5,
+    #2370f5
+  );
   z-index: 1;
   transform-origin: bottom right;
   animation: animate 2s linear infinite;
@@ -111,7 +118,14 @@ h3 {
   left: -50%;
   width: 90%;
   height: 8rem;
-  background: linear-gradient(0deg, transparent, transparent, #b91fdc, #b91fdc, #b91fdc);
+  background: linear-gradient(
+    0deg,
+    transparent,
+    transparent,
+    #b91fdc,
+    #b91fdc,
+    #b91fdc
+  );
   z-index: 0;
   transform-origin: bottom right;
   animation: animate 2s linear infinite;
