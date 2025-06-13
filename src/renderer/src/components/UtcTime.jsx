@@ -4,9 +4,30 @@ import useClock from '../hooks/useClock'
 import '../styles/Clock.css'
 
 /**
- * Componente que muestra la hora UTC
+ * Componente que muestra la hora Universal Coordinada (UTC) con formato legible.
+ * Similar al componente LocalTime pero muestra la hora en la zona horaria UTC.
+ *
  * @component
- * @returns {JSX.Element} Componente de reloj UTC
+ * @example
+ * // Uso básico
+ * <UtcTime />
+ *
+ * @returns {JSX.Element} Componente React que muestra la hora UTC formateada
+ *
+ * @see LocalTime - Componente hermano que muestra la hora local
+ * @see useClock - Hook que proporciona la lógica del reloj
+ *
+ * @description
+ * Este componente es esencial para radioaficionados que necesitan coordinar
+ * comunicaciones a nivel internacional, donde se utiliza comúnmente la hora UTC.
+ *
+ * Muestra:
+ * - Día de la semana en UTC (ej: "Monday")
+ * - Fecha completa en UTC
+ * - Hora UTC actual en formato HH:MM:SS
+ * - Etiquetas descriptivas para cada unidad de tiempo
+ *
+ * El diseño es idéntico al de LocalTime para mantener consistencia visual.
  */
 const UtcTime = React.memo(() => {
   const { t } = useTranslation()

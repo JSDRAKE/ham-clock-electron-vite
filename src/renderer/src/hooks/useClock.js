@@ -1,9 +1,24 @@
 import { useState, useEffect, useCallback } from 'react'
 
 /**
- * Custom hook para manejar la lógica del reloj
- * @param {boolean} isUtc - Indica si el reloj debe mostrar hora UTC
- * @returns {Object} Objeto con el tiempo formateado y funciones relacionadas
+ * Hook personalizado que maneja la lógica del reloj, incluyendo la actualización en tiempo real
+ * y la conversión entre zonas horarias.
+ *
+ * @example
+ * // Uso básico
+ * const { time } = useClock(); // Hora local
+ * const { time: utcTime } = useClock(true); // Hora UTC
+ *
+ * @param {boolean} [isUtc=false] - Si es true, devuelve la hora en UTC. Si es false, devuelve la hora local.
+ * @returns {Object} Objeto que contiene el tiempo formateado con las siguientes propiedades:
+ * @returns {string} time.hour - Hora en formato 'HH'
+ * @returns {string} time.minute - Minutos en formato 'MM'
+ * @returns {string} time.second - Segundos en formato 'SS'
+ * @returns {string} time.day - Día de la semana formateado (ej: 'Lunes', 'Tuesday')
+ * @returns {string} time.date - Fecha completa formateada según la configuración regional
+ *
+ * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date
+ * @see https://developer.mozilla.org/en-US/docs/Web/API/Window/requestAnimationFrame
  */
 const useClock = (isUtc = false) => {
   const [time, setTime] = useState({

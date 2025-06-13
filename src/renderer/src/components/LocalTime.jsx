@@ -4,9 +4,27 @@ import useClock from '../hooks/useClock'
 import '../styles/Clock.css'
 
 /**
- * Componente que muestra la hora local
+ * Componente que muestra la hora local con formato legible.
+ * Utiliza el hook useClock para obtener y mostrar la hora actual del sistema.
+ *
  * @component
- * @returns {JSX.Element} Componente de reloj local
+ * @example
+ * // Uso básico
+ * <LocalTime />
+ *
+ * @returns {JSX.Element} Componente React que muestra la hora local formateada
+ *
+ * @see UtcTime - Componente hermano que muestra la hora UTC
+ * @see useClock - Hook que proporciona la lógica del reloj
+ *
+ * @description
+ * Este componente muestra:
+ * - Día de la semana (ej: "Lunes")
+ * - Fecha completa (ej: "13 de junio de 2023")
+ * - Hora actual en formato HH:MM:SS
+ * - Etiquetas descriptivas para cada unidad de tiempo
+ *
+ * El diseño es responsivo y se adapta al contenedor padre.
  */
 const LocalTime = React.memo(() => {
   const { t } = useTranslation()
